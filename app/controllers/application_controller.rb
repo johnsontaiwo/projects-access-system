@@ -9,3 +9,18 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, 'project_app_secret'
   end
+
+  get '/' do
+    erb :'/homepage'
+  end
+
+  helpers do
+    def logged_in?
+      !!current_user
+    end
+
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+  end
+end
