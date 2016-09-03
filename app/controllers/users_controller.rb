@@ -15,4 +15,12 @@ get '/login' do
     end
   end
 
+  get '/logout' do
+    if !!current_user
+       session.clear
+      redirect "/"
+    end
+  end
+
+
 end
