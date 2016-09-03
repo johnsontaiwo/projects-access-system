@@ -1,1 +1,3 @@
-contractors_controller.rb
+class ContractorsController < ApplicationController
+
+end
