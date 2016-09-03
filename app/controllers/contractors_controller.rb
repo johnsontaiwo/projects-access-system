@@ -40,4 +40,11 @@ patch '/contractors/:id/edit' do
       redirect to "/contractors/#{contractor.id}"
     end
   end
+
+
+  delete '/contractors/:id/delete' do
+    contractor = Contractor.find_by(params[:id])
+     contractor.delete
+     redirect to "/contractors"
+   end
 end
