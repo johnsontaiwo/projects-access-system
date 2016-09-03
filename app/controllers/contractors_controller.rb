@@ -9,8 +9,17 @@ get '/contractors' do
   end
 end
 
+get '/contractors/new' do
+  erb :'/contractors/contractor_new'
+end
 
-
-
+post '/contractors/new' do
+  if !params[:contractor].empty?
+  contractor = Contractor.create(params[:contractor])
+  redirect to "/projects"
+  else
+  redirect to "/contractors/new"
+  end
+end
 
 end
