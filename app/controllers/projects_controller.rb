@@ -36,4 +36,20 @@ get '/projects/:id' do
    end
   end
 
+  get '/projects/:id/edit' do
+  
+    @project = Project.find(params[:id])
+    erb :'/projects/edit'
+  end
+
+  patch '/projects/:id/edit' do
+    if params[:project].empty?
+      redirect to "/projects"
+    else
+      project = Project.find_by_id(params[:id])
+      project.update(params[:project])
+      redirect to "/projects/#{project.id}"
+    end
+ end
+
 end
