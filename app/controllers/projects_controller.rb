@@ -27,4 +27,13 @@ get '/projects/new' do
   end
 end
 
+get '/projects/:id' do
+   if logged_in?
+    @project = Project.find(params[:id])
+    erb :'/projects/show_single_project'
+   else
+    redirect to "/login"
+   end
+  end
+
 end
