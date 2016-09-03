@@ -21,5 +21,8 @@ post '/contractors/new' do
   redirect to "/contractors/new"
   end
 end
-
+ get '/contractors/:id' do
+  @contractor = Contractor.find_by(params[:id])
+  erb :'/contractors/single_contractor'
+end
 end
