@@ -52,4 +52,11 @@ get '/projects/:id' do
     end
  end
 
+ delete '/projects/:id/delete' do
+  project = Project.find_by_id(params[:id])
+  project.delete
+   redirect to "/projects"
+end
+
+
 end
