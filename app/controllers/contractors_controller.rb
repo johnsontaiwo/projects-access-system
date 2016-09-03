@@ -25,4 +25,19 @@ end
   @contractor = Contractor.find_by(params[:id])
   erb :'/contractors/single_contractor'
 end
+
+
+get '/contractors/:id/edit' do
+  if logged_in?
+    @contractor = Contractor.find(params[:id])
+    erb :'/contractors/edit'
+  else
+    redirect to "/login"
+  end
+patch '/contractors/:id/edit' do
+      contractor = Contractor.find_by_id(params[:id])
+      contractor.update(params[:contractor])
+      redirect to "/contractors/#{contractor.id}"
+    end
+  end
 end
