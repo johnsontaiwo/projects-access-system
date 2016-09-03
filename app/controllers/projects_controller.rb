@@ -5,6 +5,9 @@ get '/projects/home' do
 end
 
 
-
+get '/projects' do
+  @projects = Project.all
+  erb :'/projects/projects'
+end
 
 end
